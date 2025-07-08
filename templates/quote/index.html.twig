@@ -3,43 +3,65 @@
 {% block title %}Quote index{% endblock %}
 
 {% block body %}
-    <h1>Quote index</h1>
+    <main id="container">
+        <aside class="menu">
+            <h1>Quotes</h1>
+            <ul>
+                <li><a href="{{ path('app_quote_new') }}" class="btn">Create new</a></li>
+            </ul>
+        </aside>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Date_created</th>
-                <th>Date_valid</th>
-                <th>Status</th>
-                <th>Total_ht</th>
-                <th>Total_ttc</th>
-                <th>Total_tva</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for quote in quotes %}
-            <tr>
-                <td>{{ quote.id }}</td>
-                <td>{{ quote.dateCreated ? quote.dateCreated|date('Y-m-d') : '' }}</td>
-                <td>{{ quote.dateValid ? quote.dateValid|date('Y-m-d') : '' }}</td>
-                <td>{{ quote.status }}</td>
-                <td>{{ quote.totalHt }}</td>
-                <td>{{ quote.totalTtc }}</td>
-                <td>{{ quote.totalTva }}</td>
-                <td>
-                    <a href="{{ path('app_quote_show', {'id': quote.id}) }}">show</a>
-                    <a href="{{ path('app_quote_edit', {'id': quote.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <section class="content">
+            <form class="search">
+                <fieldset>
+                    <legend>Search</legend>
+                    <label>Date created : <input type="text" name="name" /></label>
+                    <label>Client : <input type="text" name="name" /></label>
+                    <label>Status : <input type="text" name="phone" /></label>
+                    <label>Total ht : <input type="text" name="email" /></label>
+                    <label>Total ttc : <input type="text" name="email" /></label>
+                    <label>Total tva : <input type="text" name="email" /></label>
+                    <button type="submit" class="btn">Search</button>
+                </fieldset>
+            </form>
 
-    <a href="{{ path('app_quote_new') }}">Create new</a>
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Date created</th>
+                            <th>Date valid</th>
+                            <th>Status</th>
+                            <th>Total ht</th>
+                            <th>Total ttc</th>
+                            <th>Total tva</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for quote in quotes %}
+                            <tr>
+                                <td>{{ quote.id }}</td>
+                                <td>{{ quote.dateCreated ? quote.dateCreated|date('Y-m-d') : '' }}</td>
+                                <td>{{ quote.dateValid ? quote.dateValid|date('Y-m-d') : '' }}</td>
+                                <td>{{ quote.status }}</td>
+                                <td>{{ quote.totalHt }}</td>
+                                <td>{{ quote.totalTtc }}</td>
+                                <td>{{ quote.totalTva }}</td>
+                                <td>
+                                    <a href="{{ path('app_quote_show', {'id': quote.id}) }}"  class="btn-sm">show</a>
+                                    <a href="{{ path('app_quote_edit', {'id': quote.id}) }}"  class="btn-sm">edit</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="8">no records found</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
 {% endblock %}

@@ -1,0 +1,75 @@
+/* VARS */
+@use "vars/colors" as *;
+@use "vars/fonts" as *;
+@use "vars/screens" as *;
+
+/* LIBS */
+@use "libs/reset";
+
+/* PARTIALS */
+@use "partials/header";
+@use "partials/footer";
+
+/* LAYOUTS */
+@use "layouts/layout";
+
+
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: 'Athiti', sans-serif;
+  font-size: 1.8em;
+  line-height: 1.5;
+  background-color: $lightGrey;
+  color: $black;
+  &.dark_mode {
+    background-color: $black;
+    color: $white;
+  }
+  h2 {
+    font-family: "Sirin Stencil";
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: $red;
+    text-align: center;
+    margin-bottom: 4em;
+    margin-top: 1em;
+  }
+  h2::before {
+    font-size: 2rem;
+    font-family: 'FontAwesome';
+    color: $red;
+    content:"\f025";
+    padding:0.5em;
+  }
+  h2::after {
+      font-size: 2rem;
+      font-family: 'FontAwesome';
+      color: $red;
+      content:"\f025";
+      padding:0.5em;
+  }
+  h3 {
+    font-family: "Sirin Stencil";
+    font-size: 1.8rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+    font-style:italic;
+    text-decoration: underline;
+  }
+  a {
+    color: $blueElectrik;
+    font-weight: bold;
+  }
+}
+
+
+/* *****************************************************************
+DESKTOP
+***************************************************************** */
+
+@media screen and (min-width: 1100px) {
+
+}
