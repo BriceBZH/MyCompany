@@ -7,20 +7,20 @@
         <aside class="menu">
             <h1>Invoices</h1>
             <ul>
-                <li><a href="{{ path('app_invoice_new') }}}" class="btn">Create new</a></li>
+                <li><a href="{{ path('app_invoice_new') }}" class="btn">Create new</a></li>
             </ul>
         </aside>
 
         <section class="content">
-            <form class="search">
+            <form class="search" action="{{ path('search_invoice') }}" method="POST">
                 <fieldset>
                     <legend>Search</legend>
-                    <label>Date created : <input type="text" name="name" /></label>
+                    <label>Date created : <input type="text" name="date_created" /></label>
                     <label>Client : <input type="text" name="name" /></label>
-                    <label>Status : <input type="text" name="phone" /></label>
-                    <label>Total ht : <input type="text" name="email" /></label>
-                    <label>Total ttc : <input type="text" name="email" /></label>
-                    <label>Total tva : <input type="text" name="email" /></label>
+                    <label>Status : <input type="text" name="status" /></label>
+                    <label>Total ht : <input type="text" name="total_ht" /></label>
+                    <label>Total ttc : <input type="text" name="total_ttc" /></label>
+                    <label>Total tva : <input type="text" name="total_tva" /></label>
                     <button type="submit" class="btn">Search</button>
                 </fieldset>
             </form>
@@ -30,6 +30,7 @@
                     <thead>
                         <tr>
                             <th>Id</th>
+                            <th>Client</th>
                             <th>Date created</th>
                             <th>Due date</th>
                             <th>Status</th>
@@ -43,6 +44,7 @@
                         {% for invoice in invoices %}
                             <tr>
                                 <td>{{ invoice.id }}</td>
+                                <td>{{ invoice.ClientId.name }}</td>
                                 <td>{{ invoice.dateCreated ? invoice.dateCreated|date('Y-m-d') : '' }}</td>
                                 <td>{{ invoice.dueDate ? invoice.dueDate|date('Y-m-d') : '' }}</td>
                                 <td>{{ invoice.status }}</td>
@@ -56,7 +58,7 @@
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="8">no records found</td>
+                                <td colspan="9">no records found</td>
                             </tr>
                         {% endfor %}
                     </tbody>

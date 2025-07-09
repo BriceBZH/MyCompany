@@ -22,6 +22,16 @@ final class ClientController extends AbstractController
         ]);
     }
 
+    #[Route(name: 'search_client', methods: ['POST'])]
+    public function search(Request $request, ClientRepository $clientRepository): Response
+    {
+        $item = $request->request->all();
+        $clients = $clientRepository->findBySearch($item);
+        return $this->render('client/index.html.twig', [
+            'clients' => $clients,
+        ]);
+    }
+
     #[Route('/new', name: 'app_client_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {

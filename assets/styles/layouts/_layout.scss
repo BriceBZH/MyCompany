@@ -21,6 +21,11 @@
             border-radius: 4px;
             text-decoration: none;
         }
+        ul {
+            li {
+                padding-bottom: 0.5rem;
+            }
+        }
     }
     .content {
         flex: 1;
@@ -72,6 +77,38 @@
                 border-radius: 4px;
                 text-decoration: none;
             }
+        }
+        #invoice_form, #quote_form {
+            width: 100%;
+            // display: flex;
+            justify-content: center;
+            border-collapse: collapse;
+            background-color: $white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+            div {
+                padding: 0.75rem 1rem;
+                text-align: left;
+                border-bottom: 1px solid $black;
+                background-color: $lightGrey;
+                padding: 2rem;
+                label {
+                    
+                    padding: 2rem;
+                }
+            }
+            
+            
+        }
+        .btn-sm, .btn {
+            display: inline-block;
+            margin-right: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.85rem;
+            background-color: $blueElectrik;
+            color: $white;
+            border-radius: 4px;
+            text-decoration: none;
         }
     }
 }

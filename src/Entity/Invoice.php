@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\InvoiceRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use \DateTime;
 
 #[ORM\Entity(repositoryClass: InvoiceRepository::class)]
 class Invoice
@@ -38,6 +39,11 @@ class Invoice
 
     #[ORM\Column]
     private ?float $total_tva = null;
+
+    public function __construct()
+    {
+        $this->date_created = new DateTime();
+    }
 
     public function getId(): ?int
     {

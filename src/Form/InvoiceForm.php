@@ -23,7 +23,7 @@ class InvoiceForm extends AbstractType
             ->add('total_tva')
             ->add('client_id', EntityType::class, [
                 'class' => Client::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
             ])
             ->add('quote_id', EntityType::class, [
                 'class' => Quote::class,

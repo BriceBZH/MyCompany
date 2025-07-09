@@ -16,6 +16,29 @@ class InvoiceRepository extends ServiceEntityRepository
         parent::__construct($registry, Invoice::class);
     }
 
+    public function findBySearch(array $item) : array {
+        $result = $this->createQueryBuilder('i')
+                ->where('1 = 0')
+                ->innerJoin("i.client_id", 'c');
+        if(!empty($item['name'])) {
+            $result ->orwhere('c.name LIKE :name')
+                    ->setParameter('name', '%'.$item['name'].'%');
+        } if(!empty($item['phone'])) {
+            $result ->orWhere('c.phone LIKE :phone')
+                    ->setParameter('phone', '%'.$item['phone'].'%');
+        } if(!empty($item['email'])) {
+            $result ->orWhere('c.email LIKE :email')
+                    ->setParameter('email', '%'.$item['email'].'%');
+        } if(!empty($item['address'])) {
+            $result ->orWhere('c.address LIKE :address')
+                    ->setParameter('address', '%'.$item['address'].'%');
+        }
+        $result = $result ->getQuery()
+                          ->getResult();
+
+        return $result ?: [];
+    }
+
     //    /**
     //     * @return Invoice[] Returns an array of Invoice objects
     //     */

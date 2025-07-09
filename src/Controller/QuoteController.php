@@ -22,6 +22,16 @@ final class QuoteController extends AbstractController
         ]);
     }
 
+    #[Route(name: 'search_quote', methods: ['POST'])]
+    public function search(Request $request, QuoteRepository $quoteRepository): Response
+    {
+        $item = $request->request->all();
+        $quotes = $quoteRepository->findBySearch($item);
+        return $this->render('quote/index.html.twig', [
+            'quotes' => $quotes,
+        ]);
+    }
+
     #[Route('/new', name: 'app_quote_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {

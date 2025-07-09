@@ -22,7 +22,7 @@ class QuoteForm extends AbstractType
             ->add('total_tva')
             ->add('client_id', EntityType::class, [
                 'class' => Client::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
             ])
         ;
     }

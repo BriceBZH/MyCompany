@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\QuoteRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use \DateTime;
 
 #[ORM\Entity(repositoryClass: QuoteRepository::class)]
 class Quote
@@ -35,6 +36,11 @@ class Quote
 
     #[ORM\Column(nullable: true)]
     private ?float $total_tva = null;
+
+    public function __construct()
+    {
+        $this->date_created = new DateTime();
+    }
 
     public function getId(): ?int
     {

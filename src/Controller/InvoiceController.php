@@ -22,6 +22,16 @@ final class InvoiceController extends AbstractController
         ]);
     }
 
+    #[Route(name: 'search_invoice', methods: ['POST'])]
+    public function search(Request $request, InvoiceRepository $invoiceRepository): Response
+    {
+        $item = $request->request->all();
+        $invoices = $invoiceRepository->findBySearch($item);
+        return $this->render('invoice/index.html.twig', [
+            'invoices' => $invoices,
+        ]);
+    }
+
     #[Route('/new', name: 'app_invoice_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
