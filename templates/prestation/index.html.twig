@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prestation index{% endblock %}
+
+{% block body %}
+<main id="container">
+        <aside class="menu">
+            <h1>Prestations</h1>
+            <ul>
+                <li><a href="{{ path('app_prestation_new') }}" class="btn">Create new</a></li>
+            </ul>
+        </aside>
+
+        <section class="content">
+            <form class="search" action="{{ path('search_quote') }}" method="POST">
+                <fieldset>
+                    <legend>Search</legend>
+                    <label>Date created : <input type="text" name="date_created" /></label>
+                    <label>Client : <input type="text" name="client" /></label>
+                    <label>Status : <input type="text" name="status" /></label>
+                    <label>Total ht : <input type="text" name="total_ht" /></label>
+                    <label>Total ttc : <input type="text" name="total_ttc" /></label>
+                    <label>Total tva : <input type="text" name="total_tva" /></label>
+                    <button type="submit" class="btn">Search</button>
+                </fieldset>
+            </form>
+
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Label</th>
+                            <th>Description</th>
+                            <th>UnitPrice</th>
+                            <th>Enabled</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for prestation in prestations %}
+                        <tr>
+                            <td>{{ prestation.id }}</td>
+                            <td>{{ prestation.label }}</td>
+                            <td>{{ prestation.description }}</td>
+                            <td>{{ prestation.unitPrice }}</td>
+                            <td>{{ prestation.enabled ? 'Yes' : 'No' }}</td>
+                            <td>
+                                <a href="{{ path('app_prestation_show', {'id': prestation.id}) }}" class="btn-sm">show</a>
+                                <a href="{{ path('app_prestation_edit', {'id': prestation.id}) }}" class="btn-sm">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+{% endblock %}

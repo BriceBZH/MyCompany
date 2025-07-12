@@ -3,44 +3,52 @@
 {% block title %}Quote{% endblock %}
 
 {% block body %}
-    <h1>Quote</h1>
+    <main id="container">
+        <aside class="menu">
+            <h1>Quote</h1>
+            <ul>
+                <li><a href="{{ path('app_quote_new') }}" class="btn">Create new</a></li>
+                <li><a href="{{ path('quotes') }}" class="btn">Quotes list</a></li>
+            </ul>
+        </aside>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ quote.id }}</td>
-            </tr>
-            <tr>
-                <th>Date_created</th>
-                <td>{{ quote.dateCreated ? quote.dateCreated|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Date_valid</th>
-                <td>{{ quote.dateValid ? quote.dateValid|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ quote.status }}</td>
-            </tr>
-            <tr>
-                <th>Total_ht</th>
-                <td>{{ quote.totalHt }}</td>
-            </tr>
-            <tr>
-                <th>Total_ttc</th>
-                <td>{{ quote.totalTtc }}</td>
-            </tr>
-            <tr>
-                <th>Total_tva</th>
-                <td>{{ quote.totalTva }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('quotes') }}">back to list</a>
-
-    <a href="{{ path('app_quote_edit', {'id': quote.id}) }}">edit</a>
-
-    {{ include('quote/_delete_form.html.twig') }}
+        <section class="content">
+            <div class="table-wrapper">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ quote.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date_created</th>
+                            <td>{{ quote.dateCreated ? quote.dateCreated|date('Y-m-d') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date_valid</th>
+                            <td>{{ quote.dateValid ? quote.dateValid|date('Y-m-d') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>{{ quote.status }}</td>
+                        </tr>
+                        <tr>
+                            <th>Total_ht</th>
+                            <td>{{ quote.totalHt }}</td>
+                        </tr>
+                        <tr>
+                            <th>Total_ttc</th>
+                            <td>{{ quote.totalTtc }}</td>
+                        </tr>
+                        <tr>
+                            <th>Total_tva</th>
+                            <td>{{ quote.totalTva }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="{{ path('app_quote_edit', {'id': quote.id}) }}" class="btn-sm">edit</a>
+                {{ include('quote/_delete_form.html.twig') }}
+            </div>
+        </section>
+    </main>
 {% endblock %}

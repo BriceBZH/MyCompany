@@ -3,11 +3,17 @@
 {% block title %}Edit Quote{% endblock %}
 
 {% block body %}
-    <h1>Edit Quote</h1>
-
-    {{ include('quote/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('quotes') }}">back to list</a>
-
-    {{ include('quote/_delete_form.html.twig') }}
+    <main id="container">
+        <aside class="menu">
+            <h1>Edit Quote</h1>
+            <ul>
+                <li><a href="{{ path('quotes') }}" class="btn">Quotes list</a></li>
+                <li><a href="{{ path('app_quote_new') }}" class="btn">Create new</a></li>
+            </ul>
+        </aside>
+        <section class="content">
+            {{ include('quote/_form.html.twig', {'button_label': 'Update'}) }}
+            {{ include('quote/_delete_form.html.twig') }}
+        </section>
+    </main>
 {% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prestation{% endblock %}
+
+{% block body %}
+    <main id="container">
+        <aside class="menu">
+            <h1>Prestation</h1>
+            <ul>
+                <li><a href="{{ path('app_prestation_new') }}" class="btn">Create new</a></li>
+                <li><a href="{{ path('prestations') }}" class="btn">Prestations list</a></li>
+            </ul>
+        </aside>
+
+        <section class="content">
+            <div class="table-wrapper">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ prestation.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Label</th>
+                            <td>{{ prestation.label }}</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>{{ prestation.description }}</td>
+                        </tr>
+                        <tr>
+                            <th>UnitPrice</th>
+                            <td>{{ prestation.unitPrice }}</td>
+                        </tr>
+                        <tr>
+                            <th>Enabled</th>
+                            <td>{{ prestation.enabled ? 'Yes' : 'No' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="{{ path('app_prestation_edit', {'id': prestation.id}) }}" class="btn-sm">edit</a>
+                {{ include('prestation/_delete_form.html.twig') }}
+            </div>
+        </section>
+    </main>
+{% endblock %}

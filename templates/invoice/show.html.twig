@@ -3,44 +3,51 @@
 {% block title %}Invoice{% endblock %}
 
 {% block body %}
-    <h1>Invoice</h1>
+    <main id="container">
+        <aside class="menu">
+            <h1>Invoices</h1>
+            <ul>
+                <li><a href="{{ path('app_invoice_new') }}" class="btn">Create new</a></li>
+                <li><a href="{{ path('invoices') }}" class="btn">Invoices list</a></li>
+            </ul>
+        </aside>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ invoice.id }}</td>
-            </tr>
-            <tr>
-                <th>Date_created</th>
-                <td>{{ invoice.dateCreated ? invoice.dateCreated|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Due_date</th>
-                <td>{{ invoice.dueDate ? invoice.dueDate|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ invoice.status }}</td>
-            </tr>
-            <tr>
-                <th>Total_ht</th>
-                <td>{{ invoice.totalHt }}</td>
-            </tr>
-            <tr>
-                <th>Total_ttc</th>
-                <td>{{ invoice.totalTtc }}</td>
-            </tr>
-            <tr>
-                <th>Total_tva</th>
-                <td>{{ invoice.totalTva }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('invoices') }}">back to list</a>
-
-    <a href="{{ path('app_invoice_edit', {'id': invoice.id}) }}">edit</a>
-
-    {{ include('invoice/_delete_form.html.twig') }}
+        <section class="content">
+            <div class="table-wrapper">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ invoice.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date_created</th>
+                            <td>{{ invoice.dateCreated ? invoice.dateCreated|date('Y-m-d') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Due_date</th>
+                            <td>{{ invoice.dueDate ? invoice.dueDate|date('Y-m-d') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>{{ invoice.status }}</td>
+                        </tr>
+                        <tr>
+                            <th>Total_ht</th>
+                            <td>{{ invoice.totalHt }}</td>
+                        </tr>
+                        <tr>
+                            <th>Total_ttc</th>
+                            <td>{{ invoice.totalTtc }}</td>
+                        </tr>
+                        <tr>
+                            <th>Total_tva</th>
+                            <td>{{ invoice.totalTva }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="{{ path('app_invoice_edit', {'id': invoice.id}) }}" class="btn-sm">edit</a>
+            </div>
+        </section>
+    </main>
 {% endblock %}

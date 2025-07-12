@@ -3,11 +3,16 @@
 {% block title %}Edit Invoice{% endblock %}
 
 {% block body %}
-    <h1>Edit Invoice</h1>
-
-    {{ include('invoice/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('invoices') }}">back to list</a>
-
-    {{ include('invoice/_delete_form.html.twig') }}
+    <main id="container">
+        <aside class="menu">
+            <h1>Edit Invoice</h1>
+            <ul>
+                <li><a href="{{ path('invoices') }}" class="btn">Invoices list</a></li>
+                <li><a href="{{ path('app_invoice_new') }}" class="btn">Create new</a></li>
+            </ul>
+        </aside>
+        <section class="content">
+            {{ include('invoice/_form.html.twig', {'button_label': 'Update'}) }}
+        </section>
+    </main>
 {% endblock %}
